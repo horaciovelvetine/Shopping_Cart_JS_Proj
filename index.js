@@ -2,6 +2,8 @@
 const port = 'http://localhost:3000/api/v1';
 
 // Define specific Elements on the Page for ease of recall.
+const sponItemsList = document.getElementById('sponsoredItemsList')
+const cartItemsList = document.getElementById('cartItemsList')
 
 // Define new instance call of JS Page Elements
 const cartApi = new CartApi(port);
