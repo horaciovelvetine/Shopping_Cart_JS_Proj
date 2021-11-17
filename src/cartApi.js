@@ -8,10 +8,20 @@ class CartApi {
   getCartDetails(){
     fetch(this.refUrl)
     .then(r => r.json())
-    .then(json =>{
+    .then( json => {
+      const cartData = new Cart(json["data"])
+      json["data"]["attributes"]["sponsored_items"].forEach(sItem => {
+        //double check structure of spon items being passed in
+        // const sI = new sponItem({ debugger})
+        debugger;
+      })
+      // Return to top of CartApi Call
       debugger;
     });
     }
+
+
+  
 
 
 
