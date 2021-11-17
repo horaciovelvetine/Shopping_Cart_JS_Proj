@@ -1,7 +1,24 @@
 class CartApi {
-  // Handles the main fetch request to the api!
-  /*
+  // Each instance of the CartApi makes a fetch to the server to get Cart info, which this class formats and sends to each relevant FE OBj method(s) for persitence.
   
+  constructor(port){
+    this.refUrl = `${port}/show_cart`;
+  }
+
+  getCartDetails(){
+    fetch(this.refUrl)
+    .then(r => r.json())
+    .then(renderCartResponse);
+    }
+
+    renderCartResponse(responseData){
+      debugger;
+    }
+
+
+  
+  /*
+  refUrl == http://localhost:3000/api/v1/show_cart
   RETURNED JSON EXAMPLES/ATTRIBUTES
 {
   "data": {
@@ -42,25 +59,6 @@ class CartApi {
             "88.57"
           ]
         }, etc... ]
-        
-  
-  
   */
-  
-  // refUrl == http://localhost:3000/api/v1/show_cart
-  constructor(host){
-    this.refUrl = `${host}/show_cart`;
-  }
 
-  getCart(){
-    fetch(this.refUrl)
-    .then(r => r.json())
-    .then(renderCartResponse);
-    }
-
-    renderCartResponse(responseData){
-      debugger;
-    }
-
-  
   }
