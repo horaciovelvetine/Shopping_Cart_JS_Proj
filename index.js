@@ -1,9 +1,7 @@
 // Define host path
-const host = 'http://localhost:3000/api/v1'
+const host = 'http://localhost:3000/api/v1';
 
-
-// SC Page Elements
-
+// Define specific Elements on the Page for ease of recall.
 
 // Add default handle_submit
 // function handle_submit(e) {
@@ -11,12 +9,5 @@ const host = 'http://localhost:3000/api/v1'
 // }
 
 
-// On page load this page should check for and handle a few differnet things:
-// First: check for and instantiate any cartItem objects and append them to the page
-// Second: check for and instantiate any sponItem objects and append them to the page
-// Third: check for and instantiate any relItem objects and append them to the page
-
-//All of these elements should be present in the demo!!!
-// Process: Should fetch a cart
-
-cartApi.getCart()
+// Fetches the cart from the API and begins parsing into relevant FE OBj copies for display.
+cartApi.getCart();
