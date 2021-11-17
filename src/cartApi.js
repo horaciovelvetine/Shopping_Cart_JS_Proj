@@ -8,12 +8,11 @@ class CartApi {
   getCartDetails(){
     fetch(this.refUrl)
     .then(r => r.json())
-    .then(renderCartResponse);
+    .then(json =>{
+      debugger;
+    });
     }
 
-    renderCartResponse(responseData){
-      debugger;
-    }
 
 
   
