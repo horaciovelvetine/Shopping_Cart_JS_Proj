@@ -1,6 +1,6 @@
-class cartItem{
+// class cartItem{
   
-  static all = []
-  static parContainer = document.getElementById('cart-contents-list') 
+//   static all = []
+//   static parContainer = document.getElementById('cart-contents-list') 
 
-}
+// }
