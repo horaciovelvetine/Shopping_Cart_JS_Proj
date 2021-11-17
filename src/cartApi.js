@@ -13,6 +13,7 @@ class CartApi {
       json["data"]["attributes"]["sponsored_items"].forEach(i => {
         //double check structure of spon items being passed in
         const sponItem = new sponItem(i)
+        sponItem.addToDom()
       })
       // Return to top of CartApi Call
       debugger;
