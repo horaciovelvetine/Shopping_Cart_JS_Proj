@@ -1,8 +1,5 @@
-// Provides Constants
-
-
-// host
-const port = 'http://localhost:3000/api/v1'
+// Define host path
+const host = 'http://localhost:3000/api/v1'
 
 
 // SC Page Elements
