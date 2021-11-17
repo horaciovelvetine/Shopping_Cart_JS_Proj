@@ -10,10 +10,9 @@ class CartApi {
     .then(r => r.json())
     .then( json => {
       const cartData = new Cart(json["data"])
-      json["data"]["attributes"]["sponsored_items"].forEach(sItem => {
+      json["data"]["attributes"]["sponsored_items"].forEach(i => {
         //double check structure of spon items being passed in
-        // const sI = new sponItem({ debugger})
-        debugger;
+        const sponItem = new sponItem(i)
       })
       // Return to top of CartApi Call
       debugger;
