@@ -1,5 +1,8 @@
 class Cart {
   // Go between class that knows how to decode the data recieved from the API, and give each object its attributes
+  static current = [];
+  
+  
   constructor(data){
     
     // Begin setting values for a Cart OBj's attributes using the recieved data from the API
@@ -23,10 +26,10 @@ class Cart {
     //   const relItem = new relatedItem(i)
     //   debugger
     // })
-    
-    
-    
-    
-    debugger;
+
+    //Updates the static variable for the current cart
+    Cart.current.push(this)
+
   }
+  
 }
