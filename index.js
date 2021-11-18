@@ -4,6 +4,7 @@ const showItemPath = 'http://localhost:3000/items/'
 
 // Define specific Elements on the Page for ease of recall.
 const addSponItemButton = docuement.getElementById('addSponItemToCartBut')
+const newOrderButton = docuement.getElementById('newOrderButton')
 
 
 // Define new instance call of JS Page Elements
