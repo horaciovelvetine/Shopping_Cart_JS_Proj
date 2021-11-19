@@ -19,20 +19,15 @@ class CartApi {
         const cartItem = new CartItem(item)
         // cartItem.addToCart()
       })
-      debugger;
-      
-
-      updateCartInfoElements()
       debugger
-      return cart
+
+      return cartInfo;
     });
-    }
-
-
-  updateCartInfoElements = () => {
-    //should update the two subtotal/number of items informational elements on the page
   }
 
+
+
+}
 
 
   
@@ -80,4 +75,3 @@ class CartApi {
         }, etc... ]
   */
 
-  }
