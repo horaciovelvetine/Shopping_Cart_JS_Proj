@@ -14,14 +14,15 @@ class CartApi {
     fetch(this.refUrl)
     .then(r => r.json())
     .then( json => {
-      const cartInfo = new Cart(json["data"])
-      cartInfo.cartItems.forEach(item =>{
-        const cartItem = new CartItem(item)
-        // cartItem.addToCart()
+      const cart = new Cart(json["data"])
+      cart.cartItems.forEach(item =>{
+        const cItem = new CartItem(item)
+        cItem.attachToCart()
       })
+      
       debugger
 
-      return cartInfo;
+      return cart;
     });
   }
 
