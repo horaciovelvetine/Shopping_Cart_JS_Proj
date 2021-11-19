@@ -146,17 +146,19 @@
               <div class="d-flex flex-row pt-2">
                 <p class="h6 fw-light">Subtotal (# items): <span class="fw-bold">$00.00</span></p>
               </div>
-
-              <div class="d-flex flex-row">
-                <div class="mb-3 form-check lh-1">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label pt-1" for="exampleCheck1"><span class="fs-6"><small>This order contains a gift</small></span></label>
+              
+              <form>
+                <div class="d-flex flex-row">
+                  <div class="mb-3 form-check lh-1">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label pt-1" for="exampleCheck1"><span class="fs-6"><small>This order contains a gift</small></span></label>
+                  </div>
                 </div>
-              </div>
 
-              <div class="d-flex flex-row px-2">
-                <button type="button" class="btn btn-warning w-100" id="newOrderButton">Proceed to checkout</button>
-              </div>
+                <div class="d-flex flex-row px-2">
+                  <input type="button" class="btn btn-warning w-100" id="newOrderButton">Proceed to checkout</input>x
+                </div>
+              </form>
 
             </div>
           </div>
@@ -208,8 +210,8 @@
 <div class="d-flex flex-row">
   <!-- RELATED ITEMS CAROUSEL -->
   <div class="d-flex flex-row">
-    <div class="col flex-fill ">
-      <div class="card p-3 ,-2 mb-5">This should be the carousel of item contents</div>
+    <div class="flex-fill ">
+      <div class="p-3 mb-5" id="relatedItemCarousel">This should be the carousel of item contents</div>
     </div>
   </div>
 </div>
