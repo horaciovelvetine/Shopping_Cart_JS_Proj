@@ -7,8 +7,6 @@ const cartApi = new CartApi(port);
 
 cartApi.getCartDetails();
 
-
-
 // Define specific Elements on the Page for ease of recall.
 // const addSponItemButton = docuement.getElementById('addSponItemToCartButton')
 // const newOrderButton = docuement.getElementById('newOrderButton')

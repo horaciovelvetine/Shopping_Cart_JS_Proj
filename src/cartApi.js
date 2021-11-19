@@ -15,12 +15,14 @@ class CartApi {
     .then(r => r.json())
     .then( json => {
       const cart = new Cart(json["data"])
-      cart.cartItems.forEach(item =>{
-        const cItem = new CartItem(item)
-        cItem.attachToCart()
+      cart.cartItems.forEach(item => {
+        const c = new CartItem(item)
+        c.attachToCart()
       })
-      
-      debugger
+      cart.sponItems.forEach(itemToo => {
+        const s = new SponsorItem(itemToo)
+        s.attatchToDom()
+      })
 
       return cart;
     });
