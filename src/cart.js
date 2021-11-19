@@ -15,12 +15,14 @@ class Cart {
     this.styles = data.attributes.styles
     this.cartItems = data.attributes.cart_items
     this.relItems = data.attributes.related_items
+
+    // Add in updating the subtotal/number of items on page during initialization
     
     // Instantiate new copies of ea. cartItem & relItem for display
-    data.cart_items.forEach(i => {
-      const cartItem = new cartItem(i)
-      debugger
-    })
+    // data.cart_items.forEach(i => {
+    //   const cartItem = new cartItem(i)
+    //   debugger
+    // })
     
     // data.related_items.forEach(i => {
     //   const relItem = new relatedItem(i)
@@ -29,7 +31,6 @@ class Cart {
 
     //Updates the static variable for the current cart
     Cart.current.push(this)
-
   }
   
 }
