@@ -1,4 +1,6 @@
 class SponItem {
+
+  // has: ID, NAME, RATING, NUMBER_OF_REVIEW, PRICE
   static all = []
   static sponItemsList = document.getElementById('sponsoredItemsList')
 
@@ -27,10 +29,10 @@ class SponItem {
   }
   // Is going to need to check value of inner text, if is a added render, case to that renderer and don't add listener
   addToDom(){
-    debugger
+    debugger;
     // switch (value) {
     //   case 'added':
-    //     SponItem.sponItemsList.appendChild(this.renderAdde;d)
+    //     SponItem.sponItemsList.appendChild(this.renderAdded)
     //   case 'displayed':
     //     this.element.addEventListener('click', this.clickHandler)
     //     SponItem.sponItemsList.appendChild(this.render());
@@ -40,18 +42,9 @@ class SponItem {
   }
 
   render() {
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // ADD FORM TAGS TO LINE 48 TO MODIFY TO A POST SO DATA CAN BE PROVIDED/PERSISTED TO THE DATABASE
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    this.element.innerHTML = `
+
+    this.element.innerHTML = 
+    `
       <li>
         <div class="d-flex flex-row">
           <div class="flex-column m-1">
@@ -63,7 +56,7 @@ class SponItem {
             <span>${this.rating}</span><br>
             <span>${this.Price}</span><br>
             
-            <button type="button" class="btn btn-light btn-sm border shadow-sm w-100 py-1 my-2" id="addSponItemToCartBut" item-id="${this.id}">Add to cart</button>
+            <form><input type="button" class="btn btn-light btn-sm border shadow-sm w-100 py-1 my-2" id="addSponItemToCartBut" item-id="${this.id}">Add to cart</input></form>
 
           </div>
         </div>
@@ -86,9 +79,9 @@ class SponItem {
     return this.element
   }
 
-  clickHandler= (e) => {
-    //check what values e returns when clicked, add add/to/cart case, otherwise link back to the show item page, to grab the item id and redirect to the appropriate show page
-    // window.location = `${showItempath}/${this.id}`
+  clickHandler = (e) => {
+    //check what values e returns when clicked, add add/to/cart if button, otherwise link back to the show item page, to grab the item id and redirect to the appropriate show page
+    // window.location = `${showItemPath}/${this.id}`
     debugger; 
   }
 
