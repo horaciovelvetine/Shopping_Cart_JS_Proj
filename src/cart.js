@@ -1,7 +1,8 @@
 class Cart {
   // Go between class that knows how to decode the data recieved from the API, and give each object its attributes
   static current = [];
-  
+  static belowCartInfoDisplay = document.getElementById('belowCartInfoDisplay')
+  static sidebarCartInfoDisplay = document.getElementById('sidebarCartInfoDisplay')
   
   constructor(data){
     
@@ -15,22 +16,31 @@ class Cart {
     this.styles = data.attributes.styles
     this.cartItems = data.attributes.cart_items
     this.relItems = data.attributes.related_items
+    this.sponItems = data.attributes.sponsored_items
 
-    // Add in updating the subtotal/number of items on page during initialization
-    
-    // Instantiate new copies of ea. cartItem & relItem for display
-    // data.cart_items.forEach(i => {
-    //   const cartItem = new cartItem(i)
-    //   debugger
-    // })
-    
-    // data.related_items.forEach(i => {
-    //   const relItem = new relatedItem(i)
-    //   debugger
-    // })
+
+    // Adds element attributes to cart
+    this.element = document.createElement('span')
+    this.element.dataset.id = this.id
+    this.element.id = `cart-${this.id}-info`
 
     //Updates the static variable for the current cart
     Cart.current.push(this)
+    this.attatchCartToDom()
+  }
+
+  attatchCartToDom() {
+    debugger
+    
+    // Cart.belowCartInfoDisplay.appendChild(this.renderCartInfo())
+    // Cart.sidebarCartInfoDisplay.appendChild(this.renderCartInfo())
+  }
+
+  renderCartInfo() {
+    this.element.innerHTML = 
+    `
+    Subtotal (${this.numberOfItems} items): <span class="fw-bolder"> $${this.subTotal}</span>
+    `
   }
   
 }
