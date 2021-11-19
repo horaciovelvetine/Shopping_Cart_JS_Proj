@@ -5,23 +5,32 @@ class CartApi {
     this.refUrl = `${port}/show_cart`;
   }
 
+
+    // json["data"]["attributes"]["sponsored_items"].forEach(i => {
+      //   const sponItem = new sponItem(i)
+      //   sponItem.addToDom()
+    // })
   getCartDetails(){
     fetch(this.refUrl)
     .then(r => r.json())
     .then( json => {
-      const cartData = new Cart(json["data"])
-      json["data"]["attributes"]["sponsored_items"].forEach(i => {
-        //double check structure of spon items being passed in
-        const sponItem = new sponItem(i)
-        sponItem.addToDom()
+      const cartInfo = new Cart(json["data"])
+      cartInfo.cartItems.forEach(item =>{
+        const cartItem = new CartItem(item)
+        cartItem.addToCart()
       })
-      // Return to top of CartApi Call
-      debugger;
+      
+
+      updateCartInfoElements()
+      debugger
+      return cart
     });
     }
 
 
-  
+  updateCartInfoElements = () => {
+    //should update the two subtotal/number of items informational elements on the page
+  }
 
 
 
