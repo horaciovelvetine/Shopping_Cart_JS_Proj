@@ -4,7 +4,7 @@ const showItemPath = 'http://localhost:3000/items/';
 const newOrderPath = 'http://localhost:3000/orders/new';
 
 // Define specific Elements on the Page for ease of recall.
-const addSponItemButton = docuement.getElementById('addSponItemToCartBut')
+// const addSponItemButton = docuement.getElementById('addSponItemToCartButton')
 const newOrderButton = docuement.getElementById('newOrderButton')
 
 
@@ -29,7 +29,8 @@ function addToCartHandler(e) {
 
 // Redirects to the new order page, preferably with some data to help fill out the form
 function newOrderHandler(e) {
-  window.location = newOrderPath
+  e.preventDefault
+  // window.location = newOrderPath
 }
 
 
