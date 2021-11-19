@@ -1,4 +1,4 @@
-class cartItem {
+class CartItem {
 
 //has id, name, rating, number_of_reviews price, quantity
 // CartItem = One of the item/style pairs the user has in thier cart
@@ -15,13 +15,66 @@ class cartItem {
     this.quantity = quantity
 
     //Set template HTML for ELEMENT
-    this.element = docuement.createElement('li')
+    this.element = document.createElement('li')
     this.element.dataset.id = id
     this.element.id = 'cartItem-${this.id}'
 
     // Set up cart Item to be clicked on & save to class!
     // this.element.addEventListener('click', this.handleCartItemClick)
-    cartItem.all.push(this)
+    CartItem.all.push(this)
+  }
+    // Calls the render to change the inner text of whatever cartItem it was called on, then adds that to the end of the parent container(list) element on the DOM. 
+  attachToCart(){
+    CartItem.cartItemsList.appendChild(this.renderCartItem())
+  }
+
+    // Sets the actual innerHTML of THIS cartItem
+  renderCartItem(){
+    this.element.innerHTML =
+      `
+      < div class="col-xl-3 border px-2" >
+        <div class="row my-2">
+          <img class="lazy-loaded img-fluid" src="https://via.placeholder.com/200x200" data-lazy-type="image" data-src="https://via.placeholder.com/350x150" alt="placeholder">
+        </div>
+        <div class="row">
+          <ul class="list-unstyled lh-sm">
+
+            <li>
+              styles's name
+            <li>
+            <li>
+              styles's price
+            <li>
+            <li>
+              stock notice
+            <li>
+            <li>
+              Free shipping or not
+            <li>
+            <li>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Qty [q]
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#">0</a></li>
+                  <li><a class="dropdown-item" href="#">1</a></li>
+                  <li><a class="dropdown-item" href="#">2</a></li>
+                </ul>
+              </div>
+            <li>
+            <li>
+              Delete link
+            </li>
+            <li>
+              Save for later link
+            <li>
+          </ul>
+        </div>
+
+      </div>
+      `
+      return this.element
   }
 
 
