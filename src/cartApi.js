@@ -17,8 +17,9 @@ class CartApi {
       const cartInfo = new Cart(json["data"])
       cartInfo.cartItems.forEach(item =>{
         const cartItem = new CartItem(item)
-        cartItem.addToCart()
+        // cartItem.addToCart()
       })
+      debugger;
       
 
       updateCartInfoElements()
