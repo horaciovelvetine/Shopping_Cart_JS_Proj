@@ -10,7 +10,7 @@ class CartApi {
       //   const sponItem = new sponItem(i)
       //   sponItem.addToDom()
     // })
-  getCartDetails(){
+  getCartDetails() {
     fetch(this.refUrl)
     .then(r => r.json())
     .then( json => {
@@ -28,7 +28,10 @@ class CartApi {
     });
   }
 
-
+  sendUpdatePatch() {
+    debugger
+    let {attributes} = cart
+  }
 
 }
 
