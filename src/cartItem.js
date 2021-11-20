@@ -39,7 +39,7 @@ class CartItem {
     this.element.innerHTML =
         `<div class="d-flex flex-row px-2 border-bottom">
           <div class="p-3">
-            <img class="lazy-loaded img-fluid" src="https://via.placeholder.com/225x225" data-lazy-type="image" data-src="https://via.placeholder.com/225x225" alt="placeholder">
+            <span class="itemImage"><img class="lazy-loaded img-fluid" src="https://via.placeholder.com/225x225" data-lazy-type="image" data-src="https://via.placeholder.com/225x225" alt="placeholder"></span>
           </div>
 
           <div class="flex-column flex-fill ps-1">
@@ -117,9 +117,7 @@ class CartItem {
   handleCartItemClick = (e) => {
     e.preventDefault()
     debugger
-    // if (e.target ==)
-    //items title click query
-    // document.querySelector("#cartItem-196 > div > div.flex-column.flex-fill.ps-1 > div.row.mt-3")
+    // if (e.target.class == '')
   
   
   // Pseudo structure of the cartItemHandler
