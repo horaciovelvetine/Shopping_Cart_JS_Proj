@@ -58,7 +58,7 @@ class CartItem {
               <span class="text-success fs-6"><small>In Stock</small></span>
             </div>
             <div class="row">
-              <small><span class="text-muted cartItemEligible">Eligible for FREE Shipping </span>&<span> <a href="#" id="cartItem-${this.id}-ReturnEligibleLink" target="_blank">FREE Returns</a></span></small>
+              <span class="cartItemEligible"><small><span class="text-muted">Eligible for FREE Shipping </span>&<span> <a href="#" id="cartItem-${this.id}-ReturnEligibleLink" target="_blank">FREE Returns</a></span></small></span>
             </div>
             <div class="row">
               <span class="cartItemGiftCheck"><small><input class="form-check-input lh-1 fs-6" type="checkbox" value="" id="cartItem-${this.id}-GiftCheck"> This is a gift</small></span>
@@ -80,16 +80,18 @@ class CartItem {
                       Qty: ${this.quantity}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><span class="changeQuantityToZero"><a class="dropdown-item">0</a></span></li>
-                      <li><span class="changeQuantityToOne"><a class="dropdown-item">1</a></span></li>
-                      <li><span class="changeQuantityToTwo"><a class="dropdown-item">2</a></span></li>
-                      <li><span class="changeQuantityToThree"><a class="dropdown-item">3</a></span></li>
-                      <li><span class="changeQuantityToFour"><a class="dropdown-item">4</a></span></li>
-                      <li><span class="changeQuantityToFive"><a class="dropdown-item">5</a></span></li>
-                      <li><span class="changeQuantityToSix"><a class="dropdown-item">6</a></span></li>
-                      <li><span class="changeQuantityToSeven"><a class="dropdown-item">7</a></span></li>
-                      <li><span class="changeQuantityToEight"><a class="dropdown-item">8</a></span></li>
-                      <li><span class="changeQuantityNine"><a class="dropdown-item">9</a></span></li>
+                      <div class="allCartItemQuantitys">
+                        <li><span class="changeQuantityToZero"><a class="dropdown-item">0</a></span></li>
+                        <li><span class="changeQuantityToOne"><a class="dropdown-item">1</a></span></li>
+                        <li><span class="changeQuantityToTwo"><a class="dropdown-item">2</a></span></li>
+                        <li><span class="changeQuantityToThree"><a class="dropdown-item">3</a></span></li>
+                        <li><span class="changeQuantityToFour"><a class="dropdown-item">4</a></span></li>
+                        <li><span class="changeQuantityToFive"><a class="dropdown-item">5</a></span></li>
+                        <li><span class="changeQuantityToSix"><a class="dropdown-item">6</a></span></li>
+                        <li><span class="changeQuantityToSeven"><a class="dropdown-item">7</a></span></li>
+                        <li><span class="changeQuantityToEight"><a class="dropdown-item">8</a></span></li>
+                        <li><span class="changeQuantityNine"><a class="dropdown-item">9</a></span></li>
+                      </div>
                     </ul>
                   </div>
                 </li>
@@ -117,23 +119,7 @@ class CartItem {
   handleCartItemClick = (e) => {
     e.preventDefault()
     debugger
-    // if (e.target.class == '')
-  
-  
-  // Pseudo structure of the cartItemHandler
-  // if (e.target.innerText === this.name){
-  //     // Should go to item show
-  //   } else if (e.target.button === quantity){
-  //     this.dropdownCreator(e.target)
-  //     this.saveUpdatedCartQuantity
-  //   } else if (e.target.link === delete){
-  //     this.deleteItemFromCart(e)
-  //   } else if (e.target.link === save_for_later){
-  //     this.addToUserList(e)
-  //     this.deleteItemFromCart(e)
-  //   } else if (e.target.link === compare) {
-  //     this.loadRelatedItemsPopup(e)
-  //   }
+    // if (e.target.class === "cartItemTitle, cartItemStars, cartItemPrice, cartItemEligible, cartItemGiftCheck, cartItemColor,cartItemManufacturer, allCartItemQuantitys, deleteItemFromCartLink, deleteItemFromCartLinkAndAddToList") {
     
   }
 }
