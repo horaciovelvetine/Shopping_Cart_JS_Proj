@@ -20,7 +20,7 @@
       <div class="d-flex flex-row" id="all-sc-components-bucket">
 
         <!--  CONTAINS ALL COLUMN 1  CART AND BANNER CONTENT   -->
-        <div class=" flex-column flex-fill" id="col1-banner-cart-details">
+        <div class=" flex-column flex-fill m-2" id="col1-banner-cart-details">
 
           <!--  All Banner Ad Content -->
           <div class="d-flex flex-row justify-content-center mx-3" id="ad-bucket">
@@ -55,59 +55,24 @@
                   </div>
 
                   <div class="d-flex flex-row pt-2 justify-content-center" id="cart-contents-all">
-                    <ul class="list-unstyled" id="cartItemsList">
+                    <ul class="list-unstyled flex-fill" id="cartItemsList">
                       <!--Insert all cart-contents list items here -->
                     </ul>
+                  </div>
                     
                     
                     <!-- INDIVIDUAL ITEM/STYLE CARD CONTENTS START HERE -->
-                    <!-- <div class="col-xl-3 border px-2">
-                      <div class="row my-2">
-                        <img class="lazy-loaded img-fluid" src="https://via.placeholder.com/200x200" data-lazy-type="image" data-src="https://via.placeholder.com/350x150" alt="placeholder">
-                      </div>
-                      <div class="row">
-                        <ul class="list-unstyled lh-sm">
 
-                          <li>
-                            styles's name
-                          <li>
-                          <li>
-                            styles's price
-                          <li>
-                          <li>
-                            stock notice
-                          <li>
-                          <li>
-                            Free shipping or not
-                          <li>
-                          <li>
-                            <div class="dropdown">
-                              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                Qty [q]
-                              </button>
-                              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">0</a></li>
-                                <li><a class="dropdown-item" href="#">1</a></li>
-                                <li><a class="dropdown-item" href="#">2</a></li>
-                              </ul>
-                            </div>
-                          <li>
-                          <li>
-                            Delete link
-                          </li>
-                          <li>
-                            Save for later link
-                          <li>
-                        </ul>
-                      </div>
 
-                    </div> -->
-                  
-                  </div>
 
+<!-- ###################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################### THIS SECTION NEEDS TO MOVE OUT A DIV FROM THE CART SO IT DOESNT GET APPENDED OVER WHEN THE PAGE IS CREATED -->
                   <!-- SUBTOTAL INFORMATIONAL SECTION -->
                   <div class="d-flex flex-row-reverse pt-2">
-                    <p class="h6 fw-light" id="cartInfoDisplay"></p>
+                    <div class="h6 fw-light">
+                      <ul id="belowCartInfoDisplay">
+                        <!-- CART INFORMATION DISPLAY -->
+                      </ul>
+                    </div>
                   </div>
                 </div>
 
@@ -128,7 +93,7 @@
         </div>
 
         <!--  CONTAINS ALL COLUMN 2 SIDEBAR CONTENT    -->
-        <div class="flex-column mx-auto" id="col2-sidebar">
+        <div class="flex-column m-2" id="col2-sidebar">
 
           <!-- CONTAINS ALL OF THE PROCEED TO CHECKOUT CARD COL2-->
           <div class="d-flex flex-row pt-3">
@@ -138,20 +103,25 @@
 
                   <div class="d-flex flex-row">
                     <p class="fs-6 lh-1"><small>
-                        <span class="text-success">Your order qualifies for FREE Shipping.</span>
-                        Choose this option at checkout.
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#378805" class="bi bi-check-lg"
+                          viewBox="0 0 16 16">
+                          <path
+                            d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
+                        </svg><span class="text-success">Your order qualifies for FREE Shipping.</span>
+                        <br>Choose this option at checkout.
                       </small></p>
                   </div>
 
-                  <div class="d-flex flex-row pt-2">
-                    <p class="h6 fw-light" id="cartInfoDisplay"></p>
-                  </div>
+                    <div class="h5 fw-light lh-1">
+                      <ul class="list-unstyled" id="sidebarCartInfoDisplay">
+                        <!-- CART INFORMATION DISPLAY -->
+                      </ul>
+                    </div>
                   
                   <form id="newOrderForm">
-                    <div class="d-flex flex-row">
+                    <div class="d-flex flex-row lh-1">
                       <div class="mb-3 form-check lh-1">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label pt-1" for="exampleCheck1"><span class="fs-6"><small>This order contains a gift</small></span></label>
+                        <input type="checkbox" class="form-check-input" id="giftCheckbox"><span class="mt-2">This order contains a gift</span>
                       </div>
                     </div>
 
@@ -173,27 +143,7 @@
                   <div class="">
                     <p class="fs-6 lh-sm fw-bolder">Sponsored Products related to items in your cart</p>
                     <ul class="list-unstyled" id="sponsoredItemsList">
-                      <!-- ALL ELEMENTS OF A SPONSORED ITEM LIST MEMBER-->
-                      
-                      
-                      
-                      <!-- Example Sponsored Item Tempalte -->
-                      <!-- <li>
-                        <div class="d-flex flex-row">
-                          <div class="flex-column m-1">
-                            <img class="lazy-loaded shadow m-2 img-fluid" src="https://via.placeholder.com/115x115" data-lazy-type="image" data-src="https://via.placeholder.com/100x100">
-                          </div>
-
-                          <div class="col-8 lh-1 m-1">
-                            <span>Name</span><br>
-                            <span>Rating</span><br>
-                            <span>Price</span><br>
-                            <button type="button" class="btn btn-light btn-sm border shadow-sm w-100 py-1 my-2">Add to cart</button>
-
-                          </div>
-                        </div> 
-                      </li> -->
-
+                      <!-- ALL SPONSORED ITEM ELEMENTS GO HERE -->
                     </ul>
                   </div>
                 </div>
@@ -229,7 +179,7 @@
     <script src="src/cartApi.js" type="text/javascript" charset="utf-8"></script>
     <script src="src/cart.js" type="text/javascript" charset="utf-8"></script>
     <!-- <script src="src/relItem.js" type="text/javascript" charset="utf-8"></script> -->
-    <!-- <script src="src/sponItem.js" type="text/javascript" charset="utf-8"></script> -->
+    <script src="src/sponItem.js" type="text/javascript" charset="utf-8"></script>
     <script src="src/cartItem.js" type="text/javascript" charset="utf-8"></script>
 
     <!-- Use as a template to add in each piece of JS -->
