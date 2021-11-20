@@ -22,26 +22,30 @@ class Cart {
 
     // Adds element attributes to cart
     this.element = document.createElement('li')
-    this.element.dataset.id = id
-    this.element.id = `cart-${id}-info`
+    // this.element.dataset.id = id
+    // this.element.id = `cart-${id}-info`
 
     //Updates the static variable for the current cart
     Cart.current.push(this)
-    this.attatchCartToDom()
+
+    // Attatches to the Cart Attributes to the DOM in 2 locations
+    this.attatchCartInfoToDomEndCart()
+    this.attatchCartInfoToDomSidebar()
+
   }
 
-  attatchCartToDom() {
-    
-    
+  attatchCartInfoToDomSidebar() {
+    // Uses the variable value to set the innerHTML to avoid attempting to place this.element more than once on the DOM. OO JS...
+    Cart.sidebarCartInfoDisplay.innerHTML = this.element.innerHTML
+  }
+
+  attatchCartInfoToDomEndCart() {
     Cart.belowCartInfoDisplay.appendChild(this.renderCartInfo())
-    Cart.sidebarCartInfoDisplay.appendChild(this.renderCartInfo())
   }
 
   renderCartInfo() {
     this.element.innerHTML = 
-    `
-    Subtotal (${this.numberOfItems} items): <span class="fw-bolder"> $${this.subTotal}</span>
-    `
+    `Subtotal (${this.numberOfItems} items): <span class="fw-bolder"> $${this.subTotal}</span>`
     return this.element
   }
   
