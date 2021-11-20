@@ -14,7 +14,7 @@ class CartApi {
     fetch(this.refUrl)
     .then(r => r.json())
     .then( json => {
-      const cart = new Cart(json["data"])
+      const cart = new Cart({id: json["data"].id, ...json["data"].attributes})
       cart.cartItems.forEach(item => {
         const c = new CartItem(item)
         c.attachToCart()
