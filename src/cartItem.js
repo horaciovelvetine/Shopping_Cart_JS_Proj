@@ -81,16 +81,16 @@ class CartItem {
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <div class="allCartItemQuantitys">
-                        <li><span class="changeQuantityToZero"><a class="dropdown-item">0</a></span></li>
-                        <li><span class="changeQuantityToOne"><a class="dropdown-item">1</a></span></li>
-                        <li><span class="changeQuantityToTwo"><a class="dropdown-item">2</a></span></li>
-                        <li><span class="changeQuantityToThree"><a class="dropdown-item">3</a></span></li>
-                        <li><span class="changeQuantityToFour"><a class="dropdown-item">4</a></span></li>
-                        <li><span class="changeQuantityToFive"><a class="dropdown-item">5</a></span></li>
-                        <li><span class="changeQuantityToSix"><a class="dropdown-item">6</a></span></li>
-                        <li><span class="changeQuantityToSeven"><a class="dropdown-item">7</a></span></li>
-                        <li><span class="changeQuantityToEight"><a class="dropdown-item">8</a></span></li>
-                        <li><span class="changeQuantityNine"><a class="dropdown-item">9</a></span></li>
+                        <li><a class="dropdown-item">0</a></li>
+                        <li><a class="dropdown-item">1</a></li>
+                        <li><a class="dropdown-item">2</a></li>
+                        <li><a class="dropdown-item">3</a></li>
+                        <li><a class="dropdown-item">4</a></li>
+                        <li><a class="dropdown-item">5</a></li>
+                        <li><a class="dropdown-item">6</a></li>
+                        <li><a class="dropdown-item">7</a></li>
+                        <li><a class="dropdown-item">8</a></li>
+                        <li><a class="dropdown-item">9</a></li>
                       </div>
                     </ul>
                   </div>
@@ -118,10 +118,55 @@ class CartItem {
 
   handleCartItemClick = (e) => {
     e.preventDefault()
-    debugger
+    // Provides a path and action for all of the cartItem elements on the page. This is the main hub for all CRUD Action Initiation.
+    let clickedOn = e.target.className
+
+    switch (clickedOn) {
+      case "cartItemTitle":
+      case "cartItemPrice":
+      case "cartItemEligible":
+      case "cartItemStars":
+      case "cartItemColor":
+      case "cartItemManufacturer":
+        //should flash a notice on screen that careful, youre headed out of the one page app!
+        alert("Watch Out! You're about to head on your way out of my single page app, why don't ya turn on around!")
+        break;
+      case "dropdown-item":
+        //should figure out which one it picked and start the changeCartItemQuantity Process w/ the backend, including updating: the cart attrubutes, and that styles quantity
+        this.saveUpdateItemQuantity(this, e.target.innerText)
+        break;
+      case "deleteItemFromCartLinkAndAddToList":
+        // does what it says
+        debugger
+        break;
+      case "deleteItemFromCartLink":
+        // does what it says
+        debugger
+        break;
+      default:
+        //acts as a catch for everything that got missed, and allows bstrap Popper JS to still handle its events correctly. 
+        console.log("null event")
+        break;
+    }
     // if (e.target.class === "cartItemTitle, cartItemStars, cartItemPrice, cartItemEligible, cartItemGiftCheck, cartItemColor,cartItemManufacturer, allCartItemQuantitys, deleteItemFromCartLink, deleteItemFromCartLinkAndAddToList") {
-    
-  }
+      
+    }
+
+
+    saveUpdateItemQuantity = (cartItem, newQuantity) => {
+      //find value of quantity of cartItem through the cart class
+      debugger
+      cartItem.quantity = newQuantity
+      
+      //double check the cart class sees that quantity change and reflects it
+      debugger
+
+      //update the cart with new attributes?
+
+
+      CartApi.sendUpdatePatch(cartItem)
+    }
+
 }
 
 
