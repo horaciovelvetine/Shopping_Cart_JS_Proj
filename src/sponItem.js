@@ -63,13 +63,11 @@ class SponsorItem {
                 </span>
               </div>
             <span class="text-danger fs-6 py-1">${this.price}</span>
-            
             <form>
               <div class="d-flex">
-                <button type="button" class="btn btn-light btn-sm border shadow-sm  py-1 my-2 px-4" id="addSponItemToCartBut" item-id="${this.id}">Add to cart</button>
+                <span class="addSponItemToCartButton"><button type="button" class="btn btn-light btn-sm border shadow-sm  py-1 my-2 px-4" id="addSponItemToCartBut" item-id="${this.id}">Add to cart</button></span>
               </div>
             </form>
-
           </div>
         </div>
       </li>
