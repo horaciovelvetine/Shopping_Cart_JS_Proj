@@ -37,63 +37,59 @@ class CartItem {
     
 
     this.element.innerHTML =
-      `
-        <div class="d-flex flex-row p-2 border my-3">
-          <div class="p-2">
-            <img class="lazy-loaded img-fluid" src="https://via.placeholder.com/200x200" data-lazy-type="image" data-src="https://via.placeholder.com/350x150" alt="placeholder">
+        `<div class="d-flex flex-row px-2 border-bottom">
+          <div class="p-3">
+            <img class="lazy-loaded img-fluid" src="https://via.placeholder.com/225x225" data-lazy-type="image" data-src="https://via.placeholder.com/225x225" alt="placeholder">
           </div>
 
           <div class="flex-column flex-fill ps-1">
-            <div class="row mt-2">
-              <span class="fs-5">${this.name}</span>
+            <div class="row mt-3 fs-5 lh-1">
+              <span class="cartItemTitle" id="cartItem-${this.id}Title">${this.name}</span>
             </div>
             <div class="row">
-              <span class=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f5a31b" class="bi bi-star" viewBox="0 0 16 16" stroke="#d39a63" stroke-width="0.25">
+              <span  class="cartItemStars" id="cartItem-${this.id}-Stars"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f5a31b" class="bi bi-star" viewBox="0 0 16 16" stroke="#d39a63" stroke-width="0.25"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f5a31b" class="bi bi-star" viewBox="0 0 16 16" stroke="#d39a63" stroke-width="0.25"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f5a31b" class="bi bi-star" viewBox="0 0 16 16" stroke="#d39a63" stroke-width="0.25"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f5a31b" class="bi bi-star" viewBox="0 0 16 16" stroke="#d39a63" stroke-width="0.25"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f5a31b" class="bi bi-star" viewBox="0 0 16 16" stroke="#d39a63" stroke-width="0.25"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f5a31b" class="bi bi-star" viewBox="0 0 16 16" stroke="#d39a63" stroke-width="0.25">
 <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-</svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f5a31b" class="bi bi-star" viewBox="0 0 16 16" stroke="#d39a63" stroke-width="0.25">
-<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-</svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f5a31b" class="bi bi-star" viewBox="0 0 16 16" stroke="#d39a63" stroke-width="0.25">
-<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-</svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f5a31b" class="bi bi-star" viewBox="0 0 16 16" stroke="#d39a63" stroke-width="0.25">
-<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-</svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f5a31b" class="bi bi-star" viewBox="0 0 16 16" stroke="#d39a63" stroke-width="0.25">
-<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-</svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f5a31b" class="bi bi-star" viewBox="0 0 16 16" stroke="#d39a63" stroke-width="0.25">
-<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                </svg><small>(${this.number_of_reviews})</small ></span >    
+                </svg><small><span id="cartItem-${this.id}-Reviews" class="align-text-top"> (${this.number_of_reviews})</span></small ></span>
             </div >
-            <div class="row">
-              <span class="fw-bolder">$${this.price}</span>
+            <div class="row fw-bolder fs-6">
+              <span class="cartItemPrice" id="cartItem-${this.id}-Price">$${this.price}</span>
             </div>
             <div class="row">
               <span class="text-success fs-6"><small>In Stock</small></span>
             </div>
             <div class="row">
-              <small><span class="text-muted">Eligible for FREE Shipping </span>&<span> <a href="#">FREE Returns</a></span></small>
+              <small><span class="text-muted cartItemEligible">Eligible for FREE Shipping </span>&<span> <a href="#" id="cartItem-${this.id}-ReturnEligibleLink" target="_blank">FREE Returns</a></span></small>
             </div>
             <div class="row">
-              <span class="lh-1 fs-6"><small><input class="form-check-input" type="checkbox" value=""> This is a gift</small></span>
+              <span class="cartItemGiftCheck"><small><input class="form-check-input lh-1 fs-6" type="checkbox" value="" id="cartItem-${this.id}-GiftCheck"> This is a gift</small></span>
             </div>
             <div class="row">
-              <small><span class="fw-bolder">Color:</span> ${this.color}</small>
+              <span class="cartItemColor"><small><span class="fw-bolder " id="cartItem-${this.id}-Color">Color:</span> ${this.color}</small></span>
             </div>
-            <div class="row">
-              <small><span class="fw-bolder">Manufacturer:</span> ${this.manufacturer}</small>
+            <div class="row" id="cartItem-${this.id}-Manufacturer">
+              <span class="cartItemManufacturer"><small><span class="fw-bolder" id="cartItem-${this.id}">Manufacturer:</span> ${this.manufacturer}</small></span>
             </div>
             
-            <div class="row pt-1 ps-2">
+            <div class="row pt-1 ps-2 pe-2">
             
               <ul class="list-group list-group-horizontal">
               
                 <li class="d-inline-flex mx-1">
                   <div class="dropdown">
                     <button class="btn btn-light border dropdown-toggle shadow" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Qty
+                      Qty: ${this.quantity}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item">Action</a></li>
-                      <li><a class="dropdown-item">Another action</a></li>
-                      <li><a class="dropdown-item">Something else here</a></li>
+                      <li><span class="changeQuantityToZero"><a class="dropdown-item">0</a></span></li>
+                      <li><span class="changeQuantityToOne"><a class="dropdown-item">1</a></span></li>
+                      <li><span class="changeQuantityToTwo"><a class="dropdown-item">2</a></span></li>
+                      <li><span class="changeQuantityToThree"><a class="dropdown-item">3</a></span></li>
+                      <li><span class="changeQuantityToFour"><a class="dropdown-item">4</a></span></li>
+                      <li><span class="changeQuantityToFive"><a class="dropdown-item">5</a></span></li>
+                      <li><span class="changeQuantityToSix"><a class="dropdown-item">6</a></span></li>
+                      <li><span class="changeQuantityToSeven"><a class="dropdown-item">7</a></span></li>
+                      <li><span class="changeQuantityToEight"><a class="dropdown-item">8</a></span></li>
+                      <li><span class="changeQuantityNine"><a class="dropdown-item">9</a></span></li>
                     </ul>
                   </div>
                 </li>
@@ -101,26 +97,32 @@ class CartItem {
                 <li> <span class="fs-5 text-muted mx-1"> | </span></li>
               
                 <li class="d-inline-flex mx-1">
-                  <small><a href="#" class="text-decoration-none">Delete</a></small>
+                  <span class="deleteItemFromCartLink"><small><a href="#" class="text-decoration-none">Delete</a></small></span>
                 </li>
                 
                 <li> <span class="fs-5 text-muted mx-1"> | </span></li>
                 
                 <li class="d-inline-flex mx-1">
-                  <small><a href="#" class="text-decoration-none">Save for Later</a></small>
+                  <span class="deleteItemFromCartLinkAndAddToList"><small><a href="#" class="text-decoration-none">Save for Later</a></small></span>
                 </li>
               </ul>
             </div>
           </div >
-        </div >
-      `
+        </div >`
       
       return this.element
   }
 
 
+  handleCartItemClick = (e) => {
+    e.preventDefault()
+    debugger
+    // if (e.target ==)
+    //items title click query
+    // document.querySelector("#cartItem-196 > div > div.flex-column.flex-fill.ps-1 > div.row.mt-3")
+  
+  
   // Pseudo structure of the cartItemHandler
-  // handleCartItemClick(e) => {
   // if (e.target.innerText === this.name){
   //     // Should go to item show
   //   } else if (e.target.button === quantity){
@@ -135,7 +137,7 @@ class CartItem {
   //     this.loadRelatedItemsPopup(e)
   //   }
     
-  // }
+  }
 }
 
 
