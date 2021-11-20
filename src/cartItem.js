@@ -21,7 +21,7 @@ class CartItem {
     //Set template HTML for ELEMENT
     this.element = document.createElement('li')
     this.element.dataset.id = id
-    this.element.id = 'cartItem-${this.id}'
+    this.element.id = `cartItem-${id}`
 
     // Set up cart Item to be clicked on & save to class!
     this.element.addEventListener('click', this.handleCartItemClick)
