@@ -120,6 +120,11 @@ class CartItem {
     return this.element;
   }
 
+  updateCartItem(quantity) {
+    console.log(this, quantity)
+    debugger
+  }
+
   handleCartItemClick = (e) => {
     e.preventDefault();
     // Provides a path and action for all of the cartItem elements on the page. This is the main hub for all CRUD Action Initiation.
@@ -138,8 +143,8 @@ class CartItem {
         );
         break;
       case "dropdown-item":
-        //should figure out which one it picked and start the changeCartItemQuantity Process w/ the backend, including updating: the cart attrubutes, and that styles quantity
-        this.saveUpdateItemQuantity(this, e.target.innerText);
+        this.updateCartItem(e.target.innerText)
+        Cart.currentCart.updateCart()
         break;
       case "deleteItemFromCartLinkAndAddToList":
         // does what it says
@@ -156,16 +161,5 @@ class CartItem {
     }
   };
 
-  saveUpdateItemQuantity = (cartItem, newQuantity) => {
-    //find value of quantity of cartItem through the cart class
-    debugger;
-    cartItem.quantity = newQuantity;
 
-    //double check the cart class sees that quantity change and reflects it
-    debugger;
-
-    //update the cart with new attributes?
-
-    CartApi.sendUpdatePatch(cartItem);
-  };
 }
