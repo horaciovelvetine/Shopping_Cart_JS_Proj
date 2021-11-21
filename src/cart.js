@@ -44,8 +44,19 @@ class Cart {
     this.attatchCartInfoToDomSidebar();
   }
   updateCart() {
-    // Should iterate over the the cartItems, and update the subTotal/numberOfItems for cart
+    this.subTotal = 0;
+    this.numberOfItems = 0;
     debugger;
+    
+    
+    // Should iterate over the the cartItems, and update the subTotal/numberOfItems for cart
+    //this == cart
+    //this.subTotal = this.cartItems.forEach((item) =>{
+    // this.subtotal += item.price.parseInt()
+    //  })
+    // this.numberOfItems = this.cartItems.forEach((item) =>{
+    // this.numberOfItems += item.quantity.parseInt()
+    //  })
   }
   attatchCartInfoToDomSidebar() {
     // Uses the variable value to set the innerHTML to avoid attempting to place this.element more than once on the DOM. OO JS...
