@@ -5,6 +5,7 @@ const newOrderPath = 'http://localhost:3000/orders/new';
 // Define new instance call of JS Page Elements
 const cartApi = new CartApi(port);
 
+// !Gets all item related page elements
 cartApi.getCartDetails();
 
 // Define specific Elements on the Page for ease of recall.
