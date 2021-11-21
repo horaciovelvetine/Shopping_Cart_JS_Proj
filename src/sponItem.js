@@ -1,42 +1,36 @@
 class SponsorItem {
-
   // id, style, rating, number_of_reviews, price
-  static all = []
-  static sponsoredItemsList = document.getElementById('sponsoredItemsList')
+  static all = [];
+  static sponsoredItemsList = document.getElementById("sponsoredItemsList");
 
-  constructor({id, style, rating, number_of_reviews, price}) {
-
-    this.id = `${id}`
-    this.style = `${style}`
-    this.rating = `${rating}`
-    this.number_of_reviews = `${number_of_reviews}`
+  constructor({ id, style, rating, number_of_reviews, price }) {
+    this.id = `${id}`;
+    this.style = `${style}`;
+    this.rating = `${rating}`;
+    this.number_of_reviews = `${number_of_reviews}`;
 
     //checks for min/max price range and sets attrb accordingly
     if (price.length == 2) {
-      this.price = `$${price[0]}-$${price[1]}`
+      this.price = `$${price[0]}-$${price[1]}`;
     } else {
-      this.price = `$${price}`
+      this.price = `$${price}`;
     }
 
-
     // create html elements for the item
-    this.element = document.createElement('li')
-    this.element.dataset.id = id
-    this.element.id = `sponsoredItemNum-${id}`
-
+    this.element = document.createElement("li");
+    this.element.dataset.id = id;
+    this.element.id = `sponsoredItemNum-${id}`;
 
     //Adds this spon item to the list of all the spon items
     SponsorItem.all.push(this);
   }
   // Is going to need to check value of inner text, if is a added render, case to that renderer and don't add listener
-  attatchToDom(){
-    SponsorItem.sponsoredItemsList.appendChild(this.renderSponsored())
+  attatchToDom() {
+    SponsorItem.sponsoredItemsList.appendChild(this.renderSponsored());
   }
 
   renderSponsored() {
-
-    this.element.innerHTML = 
-    `
+    this.element.innerHTML = `
       <li>
         <div class="d-flex flex-row">
           <div class="flex-column m-1">
@@ -71,12 +65,12 @@ class SponsorItem {
           </div>
         </div>
       </li>
-    `
-    return this.element
+    `;
+    return this.element;
   }
 
   // renderAdded() {
-  //   this.element.innerHTML = 
+  //   this.element.innerHTML =
   //     `
   //     <li>
   //       <div class="d-flex bg-light rounded align-items-center">
@@ -88,6 +82,4 @@ class SponsorItem {
   //   `
   //   return this.element
   // }
-
-
 }
