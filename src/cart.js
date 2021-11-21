@@ -1,10 +1,19 @@
 class Cart {
   // Go between class that knows how to decode the data recieved from the API, and give each object its attributes
-  static current = [];
+  static cartStorage = [];
   static belowCartInfoDisplay = document.getElementById('belowCartInfoDisplay')
   static sidebarCartInfoDisplay = document.getElementById('sidebarCartInfoDisplay')
+  // ?Easily retrieve the js instance of Cart OBj 
+  static currentCart = () => {
+  return Cart.cartStorage["0"]
+}
+
+  static updateCart = () => {
+    console.log(this);
+    debugger
+  }
   
-  constructor({id, number_of_items, sub_total, items, styles, cart_items, related_items, sponsored_items}){
+  constructor({id, number_of_items, sub_total, items, styles}){
     
     // Begin setting values for a Cart OBj's attributes using the recieved data from the API
     //data.attributes
@@ -15,18 +24,26 @@ class Cart {
     // Include nested attributes for objects which are passed thru to create the order...
     this.items = items
     this.styles = styles
-    this.cartItems = cart_items
-    this.relItems = related_items
-    this.sponItems = sponsored_items
+
+    // Annonymous functionise these attributes to return the class' to effectively maintain updated objects for each
+    this.cartItems = () => {
+      return CartItem.all
+    }
+    this.relItems = () => {
+      return RelItem.all
+    }
+    this.sponItems = () => {
+      return SponItem.all
+    }
 
 
     // Adds element attributes to cart
     this.element = document.createElement('li')
-    // this.element.dataset.id = id
-    // this.element.id = `cart-${id}-info`
+    this.element.dataset.id = id
+    this.element.id = `cart-${id}-info`
 
     //Updates the static variable for the current cart
-    Cart.current.push(this)
+    Cart.cartStorage.push(this)
 
     // Attatches to the Cart Attributes to the DOM in 2 locations
     this.attatchCartInfoToDomEndCart()
