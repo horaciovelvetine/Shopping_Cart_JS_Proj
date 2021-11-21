@@ -34,7 +34,7 @@ class CartApi {
         // ?Create RelItems OBj
         json["data"].attributes.related_items.forEach((item) => {
           const r = new RelatedItem(item);
-          r.attatchToDom();
+          // r.attatchToDom();
         })
 
         return cart;
