@@ -10,7 +10,7 @@ class Cart {
     return Cart.cartStorage["0"];
   };
 
-  constructor({ id, number_of_items, sub_total, items, styles }) {
+  constructor({ id, number_of_items, sub_total, to_order }) {
     // Begin setting values for a Cart OBj's attributes using the recieved data from the API
     //data.attributes
     this.id = id;
@@ -18,8 +18,7 @@ class Cart {
     this.subTotal = `${sub_total}`;
 
     // Include nested attributes for objects which are passed thru to create the order...
-    this.items = items;
-    this.styles = styles;
+    this.orderInfo = to_order;
 
     // Annonymous functionise these attributes to return the class' to effectively maintain updated objects for each
     this.cartItems = () => {
