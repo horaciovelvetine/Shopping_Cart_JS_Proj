@@ -121,8 +121,7 @@ class CartItem {
   }
 
   updateCartItem(quantity) {
-    console.log(this, quantity)
-    debugger
+    this.quantity = quantity;
   }
 
   handleCartItemClick = (e) => {
@@ -144,7 +143,7 @@ class CartItem {
         break;
       case "dropdown-item":
         this.updateCartItem(e.target.innerText)
-        Cart.currentCart.updateCart()
+        Cart.currentCart().updateCart()
         break;
       case "deleteItemFromCartLinkAndAddToList":
         // does what it says
