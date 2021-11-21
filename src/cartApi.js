@@ -29,8 +29,7 @@ class CartApi {
   }
 
   sendUpdatePatch() {
-    debugger
-    let {attributes} = cart
+    // TODO: PERSISTS THE CHANGES ON THE FRONT END OF THE CART TO THE BACK END AND GRABS THE NEWLY UDATED CART INFO
   }
 
 }
