@@ -8,11 +8,6 @@ class Cart {
   return Cart.cartStorage["0"]
 }
 
-  static updateCart = () => {
-    console.log(this);
-    debugger
-  }
-  
   constructor({id, number_of_items, sub_total, items, styles}){
     
     // Begin setting values for a Cart OBj's attributes using the recieved data from the API
@@ -50,7 +45,10 @@ class Cart {
     this.attatchCartInfoToDomSidebar()
 
   }
-
+  updatCart() {
+    console.log(this)
+    debugger
+  }
   attatchCartInfoToDomSidebar() {
     // Uses the variable value to set the innerHTML to avoid attempting to place this.element more than once on the DOM. OO JS...
     Cart.sidebarCartInfoDisplay.innerHTML = this.element.innerHTML
