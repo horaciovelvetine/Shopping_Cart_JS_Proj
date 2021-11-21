@@ -24,11 +24,11 @@ class Cart {
     this.cartItems = () => {
       return CartItem.all
     }
-    this.relItems = () => {
-      return RelItem.all
+    this.relatedItems = () => {
+      return RelatedItem.all
     }
-    this.sponItems = () => {
-      return SponItem.all
+    this.sponsoredItems = () => {
+      return SponsorItem.all
     }
 
 
