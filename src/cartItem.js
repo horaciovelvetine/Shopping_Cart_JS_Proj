@@ -144,6 +144,10 @@ class CartItem {
       case "dropdown-item":
         this.updateCartItem(e.target.innerText)
         Cart.currentCart().updateCart()
+        
+        // TODO: Still needs to update the visual button quantity of the new element, and persist change to the backend // SHOULD ALSO NOT FORGET TO RETURN THE NEW STYLES/ITEMS DATA BACK TO CHANGE THE FE
+        debugger
+
         break;
       case "deleteItemFromCartLinkAndAddToList":
         // does what it says
