@@ -15,7 +15,7 @@ class CartApi {
       .then((json) => {
         const cart = new Cart({
           id: json["data"].id,
-          ...json["data"].attributes,
+          ...json["data"].attributes
         });
 
         // debugger
