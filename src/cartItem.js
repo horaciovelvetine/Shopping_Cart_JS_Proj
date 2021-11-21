@@ -1,43 +1,48 @@
 class CartItem {
+  //has id, name, rating, number_of_reviews price, quantity
+  // CartItem = One of the item/style pairs the user has in thier cart
+  static all = [];
+  static cartItemsList = document.getElementById("cartItemsList");
 
-//has id, name, rating, number_of_reviews price, quantity
-// CartItem = One of the item/style pairs the user has in thier cart
-  static all = []
-  static cartItemsList = document.getElementById('cartItemsList')
+  constructor({
+    id,
+    name,
+    rating,
+    number_of_reviews,
+    price,
+    quantity,
+    color,
+    manufacturer,
+  }) {
+    // Sets the cartItems attributes
+    this.id = id;
+    this.name = `${name}`;
+    this.rating = `${rating}`;
+    this.number_of_reviews = `${number_of_reviews}`;
+    this.price = `${price}`;
+    this.quantity = `${quantity}`;
+    this.color = `${color}`;
+    this.manufacturer = `${manufacturer}`;
 
-  constructor({id, name, rating, number_of_reviews, price, quantity, color, manufacturer}){
-    // Sets the cartItems attributes 
-    this.id = id
-    this.name = `${name}`
-    this.rating = `${rating}`
-    this.number_of_reviews = `${number_of_reviews}`
-    this.price = `${price}`
-    this.quantity = `${quantity}`
-    this.color = `${color}`
-    this.manufacturer = `${manufacturer}`
-
-    this.showItemPath = `${showItemPath}/${this.id}`
+    this.showItemPath = `${showItemPath}/${this.id}`;
 
     //Set template HTML for ELEMENT
-    this.element = document.createElement('li')
-    this.element.dataset.id = id
-    this.element.id = `cartItem-${id}`
+    this.element = document.createElement("li");
+    this.element.dataset.id = id;
+    this.element.id = `cartItem-${id}`;
 
     // Set up cart Item to be clicked on & save to class!
-    this.element.addEventListener('click', this.handleCartItemClick)
-    CartItem.all.push(this)
+    this.element.addEventListener("click", this.handleCartItemClick);
+    CartItem.all.push(this);
   }
-    // Calls the render to change the inner text of whatever cartItem it was called on, then adds that to the end of the parent container(list) element on the DOM. 
-  attachToCart(){
-    CartItem.cartItemsList.appendChild(this.renderCartItem())
+  // Calls the render to change the inner text of whatever cartItem it was called on, then adds that to the end of the parent container(list) element on the DOM.
+  attachToCart() {
+    CartItem.cartItemsList.appendChild(this.renderCartItem());
   }
 
-    // Sets the actual innerHTML of THIS cartItem
-  renderCartItem(){
-    
-
-    this.element.innerHTML =
-        `<div class="d-flex flex-row px-2 border-bottom">
+  // Sets the actual innerHTML of THIS cartItem
+  renderCartItem() {
+    this.element.innerHTML = `<div class="d-flex flex-row px-2 border-bottom">
           <div class="p-3">
             <span class="itemImage"><img class="lazy-loaded img-fluid" src="https://via.placeholder.com/225x225" data-lazy-type="image" data-src="https://via.placeholder.com/225x225" alt="placeholder"></span>
           </div>
@@ -110,16 +115,15 @@ class CartItem {
               </ul>
             </div>
           </div >
-        </div >`
-      
-      return this.element
+        </div >`;
+
+    return this.element;
   }
 
-
   handleCartItemClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     // Provides a path and action for all of the cartItem elements on the page. This is the main hub for all CRUD Action Initiation.
-    let clickedOn = e.target.className
+    let clickedOn = e.target.className;
 
     switch (clickedOn) {
       case "cartItemTitle":
@@ -129,46 +133,39 @@ class CartItem {
       case "cartItemColor":
       case "cartItemManufacturer":
         //should flash a notice on screen that careful, youre headed out of the one page app!
-        alert("Watch Out! You're about to head on your way out of my single page app, why don't ya turn on around!")
+        alert(
+          "Watch Out! You're about to head on your way out of my single page app, why don't ya turn on around!"
+        );
         break;
       case "dropdown-item":
         //should figure out which one it picked and start the changeCartItemQuantity Process w/ the backend, including updating: the cart attrubutes, and that styles quantity
-        this.saveUpdateItemQuantity(this, e.target.innerText)
+        this.saveUpdateItemQuantity(this, e.target.innerText);
         break;
       case "deleteItemFromCartLinkAndAddToList":
         // does what it says
-        debugger
+        debugger;
         break;
       case "deleteItemFromCartLink":
         // does what it says
-        debugger
+        debugger;
         break;
       default:
-        //acts as a catch for everything that got missed, and allows bstrap Popper JS to still handle its events correctly. 
-        console.log("null event")
+        //acts as a catch for everything that got missed, and allows bstrap Popper JS to still handle its events correctly.
+        console.log("null event");
         break;
     }
-    // if (e.target.class === "cartItemTitle, cartItemStars, cartItemPrice, cartItemEligible, cartItemGiftCheck, cartItemColor,cartItemManufacturer, allCartItemQuantitys, deleteItemFromCartLink, deleteItemFromCartLinkAndAddToList") {
-      
-    }
+  };
 
+  saveUpdateItemQuantity = (cartItem, newQuantity) => {
+    //find value of quantity of cartItem through the cart class
+    debugger;
+    cartItem.quantity = newQuantity;
 
-    saveUpdateItemQuantity = (cartItem, newQuantity) => {
-      //find value of quantity of cartItem through the cart class
-      debugger
-      cartItem.quantity = newQuantity
-      
-      //double check the cart class sees that quantity change and reflects it
-      debugger
+    //double check the cart class sees that quantity change and reflects it
+    debugger;
 
-      //update the cart with new attributes?
+    //update the cart with new attributes?
 
-
-      CartApi.sendUpdatePatch(cartItem)
-    }
-
+    CartApi.sendUpdatePatch(cartItem);
+  };
 }
-
-
-
-  
