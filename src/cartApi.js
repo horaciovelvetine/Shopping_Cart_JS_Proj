@@ -24,16 +24,16 @@ class CartApi {
       });
 
       // ?Creates SponItems OBj
-      json["data"].attributes.sponItems.forEach((item) => {
+      json["data"].attributes.sponsored_items.forEach((item) => {
         const s = new SponsorItem(item);
         s.attatchToDom();
       });
 
-      //?Create RelItems OBj
-      json["data"].attributes.relItems.forEach((item) => {
-        const r = new RelItem(item);
-        r.attatchToDom();
-      })
+      // ?Create RelItems OBj
+      // json["data"].attributes.related_items.forEach((item) => {
+      //   const r = new RelatedItem(item);
+      //   r.attatchToDom();
+      // })
 
       return cart;
     });
