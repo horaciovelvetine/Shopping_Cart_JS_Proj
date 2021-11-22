@@ -86,7 +86,6 @@ class CartItem {
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <div class="allCartItemQuantitys">
-                        <li><a class="dropdown-item">0</a></li>
                         <li><a class="dropdown-item">1</a></li>
                         <li><a class="dropdown-item">2</a></li>
                         <li><a class="dropdown-item">3</a></li>
@@ -96,6 +95,7 @@ class CartItem {
                         <li><a class="dropdown-item">7</a></li>
                         <li><a class="dropdown-item">8</a></li>
                         <li><a class="dropdown-item">9</a></li>
+                        <li><a class="dropdown-item">10</a></li>
                       </div>
                     </ul>
                   </div>
@@ -122,6 +122,7 @@ class CartItem {
 
   updateCartItem(quantity) {
     this.quantity = quantity;
+    this.renderCartItem()
   }
 
   handleCartItemClick = (e) => {
@@ -141,26 +142,27 @@ class CartItem {
           "Watch Out! You're about to head on your way out of my single page app, why don't ya turn on around!"
         );
         break;
+
       case "dropdown-item":
+        //*updates the cartItem on the front end and DOM
         this.updateCartItem(e.target.innerText)
-        Cart.currentCart().updateCart()
-        
 
-        //!!!START HERE TOMORROW. NEXT SHOULD UPDATE THE VISUALS OF THE BUTTON (JUST CALL RENDER PROBABLY)< AND THEN NEEDS TO COMMUNICATE THAT CHANGE TO THE BACK END
-        // TODO: Still needs to update the visual button quantity of the new element, and persist change to the backend // SHOULD ALSO NOT FORGET TO RETURN THE NEW STYLES/ITEMS DATA BACK TO CHANGE THE FE
+        //*updates the Cart FrontEnd and BackEnd wise, calls CartAPI for the update.
+        Cart.currentCart().updateCartInfo()
+        // ??Then similarly do the same with the cart, but in this case the loop also sends the persist update to the backend
+
         debugger
-
         break;
+
       case "deleteItemFromCartLinkAndAddToList":
-        // does what it says
         debugger;
         break;
-      case "deleteItemFromCartLink":
-        // does what it says
+      
+      case "deleteItemFromCartLink":  
         debugger;
         break;
       default:
-        //acts as a catch for everything that got missed, and allows bstrap Popper JS to still handle its events correctly.
+        // ?acts as a catch for everything that got missed, and allows bstrap Popper JS to still handle its events correctly.
         console.log("null event");
         break;
     }
