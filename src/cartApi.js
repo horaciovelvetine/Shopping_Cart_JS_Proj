@@ -18,7 +18,6 @@ class CartApi {
           ...json["data"].attributes
         });
 
-        // debugger
         // ?Creates CartItems OBj
         json["data"].attributes.cart_items.forEach((item) => {
           const c = new CartItem(item);
@@ -42,6 +41,6 @@ class CartApi {
   }
 
   sendUpdatePatch() {
-    // TODO: PERSISTS THE CHANGES ON THE FRONT END OF THE CART TO THE BACK END AND GRABS THE NEWLY UDATED CART INFO
+    debugger
   }
 }
