@@ -145,6 +145,8 @@ class CartItem {
         this.updateCartItem(e.target.innerText)
         Cart.currentCart().updateCart()
         
+
+        //!!!START HERE TOMORROW. NEXT SHOULD UPDATE THE VISUALS OF THE BUTTON (JUST CALL RENDER PROBABLY)< AND THEN NEEDS TO COMMUNICATE THAT CHANGE TO THE BACK END
         // TODO: Still needs to update the visual button quantity of the new element, and persist change to the backend // SHOULD ALSO NOT FORGET TO RETURN THE NEW STYLES/ITEMS DATA BACK TO CHANGE THE FE
         debugger
 
