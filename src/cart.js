@@ -37,28 +37,33 @@ class Cart {
     Cart.cartBarn.push(this);
 
     // Attatches to the Cart Attributes to the DOM in 2 locations
-    this.attatchCartInfoToDomEndCart();
+    this.attatchCartInfoToDom();
   }
 
-  attatchCartIntoToDom() {
+  attatchCartInfoToDom() {
     this.attatchCartInfoToDomEndCart();
     this.attatchCartInfoToDomSidebar();
   }
   
   // ?This sets the cart attributes to 0 and then calculates the new totals.
-  updateCart() {
+  updateCartInfo() {
     this.subTotal = 0;
     this.numberOfItems = 0;
 
+
+    this.cartItems(this).forEach( item => {
+      let cart = this
+      let price = parseFloat(item.price)
+      let quantity = parseInt(item.quantity)
+      cart.subTotal += (price * quantity)
+      cart.numberOfItems += quantity
+      
+    })
+    this.subTotal = this.subTotal.toFixed(2)
+    this.attatchCartInfoToDom();
+    cartApi.sendPatch(this)
     
-    this.subTotal = this.cartItems().forEach((item) => {
-      this.subtotal += parseFloat(item.price);
-    });
-    this.numberOfItems = this.cartItems().forEach((item) => {
-      this.numberOfItems += parseInt(item.quantity);
-    });
-    
-    debugger;
+    debugger
   }
 
   attatchCartInfoToDomSidebar() {
