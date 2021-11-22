@@ -2,9 +2,7 @@ class Cart {
   // Go between class that knows how to decode the data recieved from the API, and give each object its attributes
   static cartBarn = [];
   static belowCartInfoDisplay = document.getElementById("belowCartInfoDisplay");
-  static sidebarCartInfoDisplay = document.getElementById(
-    "sidebarCartInfoDisplay"
-  );
+  static sidebarCartInfoDisplay = document.getElementById("sidebarCartInfoDisplay");
   
   // ?Easily retrieve the js instance of Cart OBj
   static currentCart = () => {
@@ -42,6 +40,10 @@ class Cart {
     this.attatchCartInfoToDomEndCart();
   }
 
+  attatchCartIntoToDom() {
+    this.attatchCartInfoToDomEndCart();
+    this.attatchCartInfoToDomSidebar();
+  }
   
   // ?This sets the cart attributes to 0 and then calculates the new totals.
   updateCart() {
@@ -57,10 +59,6 @@ class Cart {
     });
     
     debugger;
-  }
-  attachCartToDom() {
-    this.attatchCartInfoToDomEndCart();
-    this.attatchCartInfoToDomSidebar();
   }
 
   attatchCartInfoToDomSidebar() {
