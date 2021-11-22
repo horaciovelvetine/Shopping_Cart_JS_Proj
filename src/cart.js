@@ -40,17 +40,13 @@ class Cart {
     this.attatchCartInfoToDom();
   }
 
-  attatchCartInfoToDom() {
-    this.attatchCartInfoToDomEndCart();
-    this.attatchCartInfoToDomSidebar();
-  }
   
   // ?This sets the cart attributes to 0 and then calculates the new totals.
   updateCartInfo() {
     this.subTotal = 0;
     this.numberOfItems = 0;
-
-
+    
+    
     this.cartItems(this).forEach( item => {
       let cart = this
       let price = parseFloat(item.price)
@@ -61,11 +57,18 @@ class Cart {
     })
     this.subTotal = this.subTotal.toFixed(2)
     this.attatchCartInfoToDom();
-    cartApi.sendPatch(this)
     
+    
+    cartApi.sendPatch(this)
     debugger
   }
-
+  
+  
+  //* Calls both of the below functions to attatch info in multiple locations
+  attatchCartInfoToDom() {
+    this.attatchCartInfoToDomEndCart();
+    this.attatchCartInfoToDomSidebar();
+  }
   attatchCartInfoToDomSidebar() {
     // Uses the variable value to set the innerHTML to avoid attempting to place this.element more than once on the DOM. OO JS...
     Cart.sidebarCartInfoDisplay.innerHTML = this.element.innerHTML;
