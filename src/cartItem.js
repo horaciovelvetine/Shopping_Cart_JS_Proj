@@ -122,6 +122,7 @@ class CartItem {
 
   updateCartItem(quantity) {
     this.quantity = quantity;
+    Cart.currentCart().orderInfo.styles.find(e => e.id = this.id).quantity = quantity;
     this.renderCartItem()
   }
 
