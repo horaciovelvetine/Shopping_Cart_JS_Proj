@@ -1,13 +1,14 @@
 class Cart {
   // Go between class that knows how to decode the data recieved from the API, and give each object its attributes
-  static cartStorage = [];
+  static cartBarn = [];
   static belowCartInfoDisplay = document.getElementById("belowCartInfoDisplay");
   static sidebarCartInfoDisplay = document.getElementById(
     "sidebarCartInfoDisplay"
   );
+  
   // ?Easily retrieve the js instance of Cart OBj
   static currentCart = () => {
-    return Cart.cartStorage["0"];
+    return Cart.cartBarn["0"];
   };
 
   constructor({ id, number_of_items, sub_total, to_order }) {
@@ -16,10 +17,8 @@ class Cart {
     this.id = id;
     this.numberOfItems = `${number_of_items}`;
     this.subTotal = `${sub_total}`;
-
     // Include nested attributes for objects which are passed thru to create the order...
     this.orderInfo = to_order;
-
     // Annonymous functionise these attributes to return the class' to effectively maintain updated objects for each
     this.cartItems = () => {
       return CartItem.all;
@@ -37,13 +36,13 @@ class Cart {
     this.element.id = `cart-${id}-info`;
 
     //Updates the static variable for the current cart
-    Cart.cartStorage.push(this);
+    Cart.cartBarn.push(this);
 
     // Attatches to the Cart Attributes to the DOM in 2 locations
     this.attatchCartInfoToDomEndCart();
-    this.attatchCartInfoToDomSidebar();
   }
 
+  
   // ?This sets the cart attributes to 0 and then calculates the new totals.
   updateCart() {
     this.subTotal = 0;
@@ -58,9 +57,12 @@ class Cart {
     });
     
     debugger;
-    // Should iterate over the the cartItems, and update the subTotal/numberOfItems for cart
-    //this == cart
   }
+  attachCartToDom() {
+    this.attatchCartInfoToDomEndCart();
+    this.attatchCartInfoToDomSidebar();
+  }
+
   attatchCartInfoToDomSidebar() {
     // Uses the variable value to set the innerHTML to avoid attempting to place this.element more than once on the DOM. OO JS...
     Cart.sidebarCartInfoDisplay.innerHTML = this.element.innerHTML;
