@@ -2,11 +2,12 @@ class CartApi {
 
 
   constructor(port) {
-    this.refUrl = `${port}/show_cart`;
+    this.demoUrl = `${port}/show_cart`
+    this.baseUrl = `${port}/carts`
   }
 
   getCartDetails() {
-    fetch(this.refUrl)
+    fetch(this.demoUrl)
       .then((r) => r.json())
       .then((json) => {
         const cart = new Cart({
@@ -38,6 +39,24 @@ class CartApi {
 
   sendPatch(cart) {
     console.log("gotme!")
+    
+
     debugger
+
+    // const configObj = {
+    //   method: 'PATCH',
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Accept: "application/json"
+    //   },
+    //   body: JSON.stringify(payload)
+    // }
+
+    // fetch(`${this.baseUrl}/${payload.id}`, configObj).then(response => response.json()).then(json => {
+    //   console.log(json)
+    //   debugger
+    // })
+
   }
 }
+
