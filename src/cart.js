@@ -43,6 +43,8 @@ class Cart {
     this.attatchCartInfoToDomEndCart();
     this.attatchCartInfoToDomSidebar();
   }
+
+  // ?This sets the cart attributes to 0 and then calculates the new totals.
   updateCart() {
     this.subTotal = 0;
     this.numberOfItems = 0;
