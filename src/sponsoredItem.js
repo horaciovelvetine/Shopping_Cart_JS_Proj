@@ -30,14 +30,17 @@ class SponsorItem {
   }
 
   handleSponsorItemClick(e) {
+    let styleSelections = []
 
     switch (e.target.innerText) {
       case "Add to Cart":
-        let event = e
         const addItemId = this.dataset.id
-        debugger
-        //
-        // cartApi.addSponsortItemToCart(this.id.replace(/\D/g, ''))
+        const item = SponsorItem.all.find(item => item.id == addItemId)
+        for (const [i, style] of item.styles.entries()) {
+          let checked = document.getElementById('sponsorItemStyleOption').children[i].childNodes[0].childNodes[0].childNodes[0].checked
+          styleSelections.push({ i, checked })
+        }
+        cartApi.addSponsortItemToCart(addItemId, styleSelections);
         break;
 
       default:
@@ -51,6 +54,7 @@ class SponsorItem {
   }
 
   renderSponsoredItem() {
+
     this.element.innerHTML = `
       <li>
         <div class="d-flex flex-row">
@@ -81,7 +85,7 @@ class SponsorItem {
             <form>
               <div class="d-flex">
                 <span class="addSponItemToCartButton">
-                  <button type="button" class="btn btn-light btn-sm border shadow-sm py-1 my-2 px-4" data-bs-toggle="modal" data-bs-target="#sponsorModal" id="addSponItemToCartBut item-id=${this.id}">
+                  <button type="button" class="btn btn-light btn-sm border shadow-sm py-1 my-2 px-4" data-bs-toggle="modal" data-bs-target="#sponsorModal${this.id}" id="addSponItemToCartBut item-id=${this.id}">
                     See All Buying Options
                   </button>
                 </span>
@@ -91,7 +95,7 @@ class SponsorItem {
         </div>
       </li>
       <!-- Modal -->
-        <div class="modal fade" id="sponsorModal" tabindex="-1" aria-labelledby="sponsorModalLabel" aria-hidden="true">
+        <div class="modal fade" id="sponsorModal${this.id}" tabindex="-1" aria-labelledby="sponsorModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -100,7 +104,9 @@ class SponsorItem {
               </div>
               <div class="modal-body">
                 <ul class="list-unstyled list-group">
-                  ${this.renderModalListContent()}
+                  <div class="sponsorItemStyleOptionList" id="sponsorItemStyleOption">
+                    ${this.renderModalListContent()}
+                  </div>
                 </ul>
               </div>
               <div class="modal-footer">
@@ -113,12 +119,15 @@ class SponsorItem {
     return this.element;
   }
 
-  renderModalListContent() {
+  renderModalListContent = () => {
     let returnString = ""
-    this.styles.forEach(style => {
-
-      returnString += `<li><div class="form-check"><div class="sponsorItemStyleCheckbox"><input class="form-check-input" type="checkbox" value="" id="sponsoredItemStyle#-{style.id}Check"></div><label class="form-check-label" for="sponsoredItemStyle#-{style.id}Check"><div class="sponsoredItemStyleOption" id="sponsoredItemStyle#-${style.id}"><span class="fst-italic fw-bold">${style.name}</span><span class="fw-bolder text-danger"> $${style.price}</span></div></label></div>`
-    })
+    if (this.styles.length > 1) {
+      this.styles.forEach(style => {
+        returnString += `<li><div class="form-check"><div class="sponsorItemStyleCheckbox"><input class="form-check-input" type="checkbox" value="" id="sponsoredItemStyle#-${style.id}Check"></div><label class="form-check-label" for="sponsoredItemStyle#-${style.id}Check"><div class="sponsoredItemStyleOption" id="sponsoredItemStyle#-${style.id}"><span class="fst-italic fw-bold">${style.name}</span><span class="fw-bolder text-danger"> $${style.price}</span></div></label></div>`
+      })
+    } else {
+      returnString += `<li><div class="form-check"><div class="sponsorItemStyleCheckbox"><input class="form-check-input" type="checkbox" value="" id="sponsoredItemStyle#-{style.id}Check"></div><label class="form-check-label" for="sponsoredItemStyle#-{style.id}Check"><div class="sponsoredItemStyleOption" id="sponsoredItemStyle#-${this.styles[0].id}"><span class="fst-italic fw-bold">${this.styles[0].name}</span><span class="fw-bolder text-danger"> $${this.styles[0].price}</span></div></label></div>`
+    }
     return returnString
   }
 }
