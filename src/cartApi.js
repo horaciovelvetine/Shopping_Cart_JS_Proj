@@ -86,12 +86,12 @@ class CartApi {
   // }
 
   addSponsortItemToCart(item_id) {
-    const id = Cart.currentCart()
-    const add_item = item_id
+    const cart = Cart.currentCart()
+    const id = cart.id
 
     const payload = {
       id,
-      add_item
+      item_id
     }
 
     const configOBj = {
@@ -102,10 +102,9 @@ class CartApi {
       },
       body: JSON.stringify(payload)
     }
-
-    fetch(`${this.baseUrl}/${cart.id}/add_sponsor_item/${add_item}`, configOBj).then(res => res.json()).then(json => {
+    fetch(`${this.baseUrl}/${cart.id}/add_item/${item_id}`, configOBj).then(res => res.json()).then(json => {
       cartApi.attatchResponseToDom();
-      return console.log("Add SponsorItem")
+      return console.log("Add SponsorItem");
     })
   }
 
