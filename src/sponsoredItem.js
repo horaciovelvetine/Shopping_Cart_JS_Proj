@@ -31,14 +31,15 @@ class SponsorItem {
 
   handleSponsorItemClick(e) {
     let styleSelections = []
-
     switch (e.target.innerText) {
       case "Add to Cart":
         const addItemId = this.dataset.id
         const item = SponsorItem.all.find(item => item.id == addItemId)
         for (const [i, style] of item.styles.entries()) {
+
           let checked = document.getElementById('sponsorItemStyleOption').children[i].childNodes[0].childNodes[0].childNodes[0].checked
           styleSelections.push({ i, checked })
+          debugger
         }
         cartApi.addSponsortItemToCart(addItemId, styleSelections);
         break;
