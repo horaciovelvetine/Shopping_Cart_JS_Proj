@@ -7,3 +7,6 @@ const cartApi = new CartApi(port);
 
 // !Gets all item related page elements & OO's the front end.
 cartApi.getCartDetails();
+
+
+const notificationsBucket = document.getElementById("notificationsBucket");
