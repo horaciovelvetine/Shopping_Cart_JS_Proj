@@ -32,7 +32,6 @@ class SponsorItem {
 
     switch (e.target.innerText) {
       case "Add to cart":
-        debugger
         cartApi.addSponsortItemToCart(this.id.replace(/\D/g, ''))
         break;
       default:
