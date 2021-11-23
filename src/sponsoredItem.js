@@ -32,10 +32,14 @@ class SponsorItem {
   handleSponsorItemClick(e) {
 
     switch (e.target.innerText) {
-      case "":
-        console.log(e)
+      case "Add to Cart":
+        let event = e
+        const addItemId = this.dataset.id
+        debugger
+        //
         // cartApi.addSponsortItemToCart(this.id.replace(/\D/g, ''))
         break;
+
       default:
         console.log(e)
         break;
@@ -105,8 +109,7 @@ class SponsorItem {
               </div>
             </div>
           </div>
-        </div>
-    `
+        </div>`
     return this.element;
   }
 
@@ -114,7 +117,7 @@ class SponsorItem {
     let returnString = ""
     this.styles.forEach(style => {
 
-      returnString += `<li><div class="form-check"><input class="form-check-input" type="checkbox" value="" id="sponsoredItemStyle#-{style.id}Check"><label class="form-check-label" for="sponsoredItemStyle#-{style.id}Check"><div class="sponsoredItemStyleOption" id="sponsoredItemStyle#-${style.id}"><span class="fst-italic fw-bold">${style.name}</span><span class="fw-bolder text-danger"> $${style.price}</span></div></label></div>`
+      returnString += `<li><div class="form-check"><div class="sponsorItemStyleCheckbox"><input class="form-check-input" type="checkbox" value="" id="sponsoredItemStyle#-{style.id}Check"></div><label class="form-check-label" for="sponsoredItemStyle#-{style.id}Check"><div class="sponsoredItemStyleOption" id="sponsoredItemStyle#-${style.id}"><span class="fst-italic fw-bold">${style.name}</span><span class="fw-bolder text-danger"> $${style.price}</span></div></label></div>`
     })
     return returnString
   }
