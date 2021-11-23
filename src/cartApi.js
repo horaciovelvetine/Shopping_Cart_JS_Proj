@@ -65,11 +65,12 @@ class CartApi {
 
     fetch(`${this.baseUrl}/${cart.id}`, configOBj)
       .then(res => res.json())
-      .then(json => {
-        cartApi.attatchResponseToDom();
-        return console.log("Update success")
-      })
+      .then(json => alert(json.message))
+
+    cartApi.attatchResponseToDom();
+    return console.log("Update success")
   }
+
 
   // emptyCart(id) {
   //   const payload = {
@@ -126,10 +127,11 @@ class CartApi {
       body: JSON.stringify(payload)
     };
 
-    fetch(`${this.baseUrl}/${id}/remove_item/${style.id}`, configOBj).then(res => res.json()).then(json => {
-      cartApi.attatchResponseToDom();
-      return console.log("Item Removed")
-    })
+    fetch(`${this.baseUrl}/${id}/remove_item/${style.id}`, configOBj)
+      .then(res => res.json())
+      .then(json => alert(json.message))
+    cartApi.attatchResponseToDom();
+    return console.log("Item Removed")
   }
 
   renderAlertMessage() {
