@@ -21,15 +21,31 @@ class SponsorItem {
     this.element.dataset.id = id;
     this.element.id = `sponsoredItemNum-${id}`;
 
+    // adds listner for the sponsored item
+    this.element.addEventListener("click", this.handleSponsorItemClick);
+
     //Adds this spon item to the list of all the spon items
     SponsorItem.all.push(this);
   }
+
+  handleSponsorItemClick(e) {
+
+    switch (e.target.innerText) {
+      case "Add to cart":
+        debugger
+        cartApi.addSponsortItemToCart(this.id.replace(/\D/g, ''))
+        break;
+      default:
+        console.log("Link to Sponsored Item")
+        break;
+    }
+  }
   // Is going to need to check value of inner text, if is a added render, case to that renderer and don't add listener
   attatchToDom() {
-    SponsorItem.sponsoredItemsList.appendChild(this.renderSponsored());
+    SponsorItem.sponsoredItemsList.appendChild(this.renderSponsoredItem());
   }
 
-  renderSponsored() {
+  renderSponsoredItem() {
     this.element.innerHTML = `
       <li>
         <div class="d-flex flex-row">
@@ -65,21 +81,9 @@ class SponsorItem {
           </div>
         </div>
       </li>
-    `;
+    `
     return this.element;
   }
-
-  // renderAdded() {
-  //   this.element.innerHTML =
-  //     `
-  //     <li>
-  //       <div class="d-flex bg-light rounded align-items-center">
-  //         <div class="d-flex flex-fill justify-content-center w-100 ">
-  //           <p class="fs5 py-3 mt-3">Item added to cart Successfully!</p>
-  //         </div>
-  //       </div>
-  //     </li>
-  //   `
-  //   return this.element
-  // }
 }
+
+
