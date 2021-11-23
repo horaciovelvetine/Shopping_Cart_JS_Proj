@@ -3,11 +3,12 @@ class SponsorItem {
   static all = [];
   static sponsoredItemsList = document.getElementById("sponsoredItemsList");
 
-  constructor({ id, style, rating, number_of_reviews, price }) {
+  constructor({ id, name, rating, number_of_reviews, price, styles }) {
     this.id = `${id}`;
-    this.style = `${style}`;
+    this.name = `${name}`;
     this.rating = `${rating}`;
     this.number_of_reviews = `${number_of_reviews}`;
+    this.styles = styles;
 
     //checks for min/max price range and sets attrb accordingly
     if (price.length == 2) {
@@ -31,11 +32,12 @@ class SponsorItem {
   handleSponsorItemClick(e) {
 
     switch (e.target.innerText) {
-      case "Add to cart":
-        cartApi.addSponsortItemToCart(this.id.replace(/\D/g, ''))
+      case "":
+        console.log(e)
+        // cartApi.addSponsortItemToCart(this.id.replace(/\D/g, ''))
         break;
       default:
-        console.log("Link to Sponsored Item")
+        console.log(e)
         break;
     }
   }
@@ -53,7 +55,7 @@ class SponsorItem {
           </div>
 
           <div class="flex-column lh-1 m-1 pt-2">
-            <span class="text-primary fs-5">${this.style}</span>
+            <span class="text-primary fs-5">${this.name}</span>
               <div class="row my-1">
                 <span class="">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f5a31b" class="bi bi-star" viewBox="0 0 16 16" stroke="#d39a63" stroke-width="0.25">
@@ -74,15 +76,46 @@ class SponsorItem {
             <span class="text-danger fs-6 py-1">${this.price}</span>
             <form>
               <div class="d-flex">
-                <span class="addSponItemToCartButton"><button type="button" class="btn btn-light btn-sm border shadow-sm  py-1 my-2 px-4" id="addSponItemToCartBut" item-id="${this.id}">Add to cart</button></span>
+                <span class="addSponItemToCartButton">
+                  <button type="button" class="btn btn-light btn-sm border shadow-sm py-1 my-2 px-4" data-bs-toggle="modal" data-bs-target="#sponsorModal" id="addSponItemToCartBut item-id=${this.id}">
+                    See All Buying Options
+                  </button>
+                </span>
               </div>
             </form>
           </div>
         </div>
       </li>
+      <!-- Modal -->
+        <div class="modal fade" id="sponsorModal" tabindex="-1" aria-labelledby="sponsorModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">${this.name} Style Options</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <ul class="list-unstyled list-group">
+                  ${this.renderModalListContent()}
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary py-1 my-2 px-4" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-light border py-1 my-2 px-4">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
     `
     return this.element;
   }
+
+  renderModalListContent() {
+    let returnString = ""
+    this.styles.forEach(style => {
+
+      returnString += `<li><div class="form-check"><input class="form-check-input" type="checkbox" value="" id="sponsoredItemStyle#-{style.id}Check"><label class="form-check-label" for="sponsoredItemStyle#-{style.id}Check"><div class="sponsoredItemStyleOption" id="sponsoredItemStyle#-${style.id}"><span class="fst-italic fw-bold">${style.name}</span><span class="fw-bolder text-danger"> $${style.price}</span></div></label></div>`
+    })
+    return returnString
+  }
 }
-
-
