@@ -8,9 +8,7 @@ class CartApi {
     this.baseUrl = `${port}/carts`
 
     this.element = document.createElement('li')
-    this.element.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert">
-    Cart Updated <strong>Successfully</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>`
+
     this.element.dataset.id = 'notification'
     this.element.id = 'notification'
   }
@@ -66,10 +64,81 @@ class CartApi {
     }
 
     fetch(`${this.baseUrl}/${cart.id}`, configOBj).then((res) => res.json()).then(json => {
+      cartApi.setAlertMessage('updated')
       cartApi.attatchResponseToDom();
       return console.log("Update success", json)
     })
 
+  }
+
+  emptyCart(id) {
+    const payload = {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    }
+
+    fetch(`${this.baseUrl}/${id}`, payload)
+      .then(r => r.json())
+      .then(json => alert(json.message))
+  }
+
+  removeItemFromCart(style) {
+
+    const id = Cart.currentCart().id;
+    const style_id = style.id;
+    const payload = {
+      id,
+      style_id
+    };
+
+    const configOBj = {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(payload)
+    };
+
+    fetch(`${this.baseUrl}/${id}/remove_item/${style.id}`, configOBj);
+    cartApi.setAlertMessage('removed');
+    debugger
+    cartApi.attatchResponseToDom();
+    debugger
+
+    return Cart.currentCart()
+
+  }
+
+  setAlertMessage = (kind) => {
+    this.element.remove()
+    switch (kind) {
+      case 'updated':
+        this.element.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+        Cart Updated <strong>Successfully</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>`
+        console.log("Cart Update Success")
+        break;
+      case 'emptied':
+        this.element.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+        Cart Emptied <strong>Successfully</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>`
+        console.log("Cart Emptied Success")
+        break;
+      case 'removed':
+        this.element.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+        Item Removed <strong>Successfully</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>`
+        console.log("Item Removed from Cart")
+        break;
+      default:
+        console.log("An unknown error occurred!");
+    }
+    debugger
+    return;
   }
 
   attatchResponseToDom() {
