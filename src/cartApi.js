@@ -71,7 +71,6 @@ class CartApi {
     return console.log("Update success")
   }
 
-
   // emptyCart(id) {
   //   const payload = {
   //     method: 'DELETE',
@@ -95,7 +94,7 @@ class CartApi {
       addItemId,
       selections
     }
-    debugger
+
     const configOBj = {
       method: 'PATCH',
       headers: {
@@ -104,7 +103,8 @@ class CartApi {
       },
       body: JSON.stringify(payload)
     }
-    fetch(`${this.baseUrl}/${cart.id}/add_item/${item_id}`, configOBj).then(res => res.json()).then(json => {
+
+    fetch(`${this.baseUrl}/${cart.id}/add_item/${addItemId}`, configOBj).then(res => res.json()).then(json => {
       debugger
       cartApi.attatchResponseToDom();
       return console.log("Add SponsorItem");
