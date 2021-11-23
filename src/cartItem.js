@@ -73,7 +73,7 @@ class CartItem {
         console.log("null event", e);
         break;
     }
-    return e;
+    return console.log("handleCartItemClickExit");
   };
   // Calls the render to change the inner text of whatever cartItem it was called on, then adds that to the end of the parent container(list) element on the DOM.
   attachToCart() {
