@@ -26,9 +26,16 @@ class CartItem {
     this.element.addEventListener("click", this.handleCartItemClick);
     CartItem.all.push(this);
   }
+
   updateCartItem(quantity) {
     this.quantity = quantity;
     this.renderCartItem()
+  }
+
+  removeFromAll(item) {
+    item.element.remove()
+    item.quantity = 0
+    debugger
   }
 
   handleCartItemClick = (e) => {
@@ -48,27 +55,23 @@ class CartItem {
           "Watch Out! You're about to head on your way out of my single page app, why don't ya turn on around!"
         );
         break;
-
       case "dropdown-item":
         //*updates the cartItem on the front end and DOM
         this.updateCartItem(e.target.innerText)
-
         //*updates the Cart FrontEnd and BackEnd wise, calls CartAPI for the update.
         Cart.currentCart().updateCartInfo()
-        // ??Then similarly do the same with the cart, but in this case the loop also sends the persist update to the backend
-
         break;
-
-      case "deleteItemFromCartLinkAndAddToList":
-        debugger;
+      case "removeItemFromCartLink text-decoration-none":
+        this.removeFromAll(this)
+        Cart.currentCart().updateCartInfo()
+        cartApi.removeItemFromCart(this)
         break;
-
-      case "deleteItemFromCartLink":
+      case "text-decoration-none removeItemFromCartLinkAndAddToList":
         debugger;
         break;
       default:
         // ?acts as a catch for everything that got missed, and allows bstrap Popper JS to still handle its events correctly.
-        console.log("null event");
+        console.log("null event", e);
         break;
     }
   };
@@ -146,13 +149,13 @@ class CartItem {
                 <li> <span class="fs-5 text-muted mx-1"> | </span></li>
               
                 <li class="d-inline-flex mx-1">
-                  <span class="deleteItemFromCartLink"><small><a href="#" class="text-decoration-none">Delete</a></small></span>
+                  <span class=""><small><a href="#" class="removeItemFromCartLink text-decoration-none" id="removeItemFromCartLink">Remove</a></small></span>
                 </li>
                 
                 <li> <span class="fs-5 text-muted mx-1"> | </span></li>
                 
                 <li class="d-inline-flex mx-1">
-                  <span class="deleteItemFromCartLinkAndAddToList"><small><a href="#" class="text-decoration-none">Save for Later</a></small></span>
+                  <span class=""><small><a href="#" class="text-decoration-none removeItemFromCartLinkAndAddToList" id="saveForLaterLink">Save for Later</a></small></span>
                 </li>
               </ul>
             </div>
