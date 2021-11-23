@@ -22,19 +22,19 @@ class CartApi {
           ...json["data"].attributes
         });
 
-        // ?Creates CartItems OBj
+        //* Creates CartItems OBj
         json["data"].attributes.cart_items.forEach(item => {
           const c = new CartItem(item);
           c.attachToCart();
         });
 
-        // ?Creates SponItems OBj
+        //* Creates SponItems OBj
         json["data"].attributes.sponsored_items.forEach(item => {
           const s = new SponsorItem(item);
           s.attatchToDom("item");
         });
 
-        // ?Create RelItems OBj
+        //* Create RelItems OBj
         json["data"].attributes.related_items.forEach(item => {
           const r = new RelatedItem(item);
           // r.attatchToDom();
@@ -86,15 +86,16 @@ class CartApi {
   //     .then(json => alert(json.message))
   // }
 
-  addSponsortItemToCart(item_id) {
+  addSponsortItemToCart(addItemId, selections) {
     const cart = Cart.currentCart()
-    const id = cart.id
+    const cartId = cart.id
 
     const payload = {
-      id,
-      item_id
+      cartId,
+      addItemId,
+      selections
     }
-
+    debugger
     const configOBj = {
       method: 'PATCH',
       headers: {
@@ -104,6 +105,7 @@ class CartApi {
       body: JSON.stringify(payload)
     }
     fetch(`${this.baseUrl}/${cart.id}/add_item/${item_id}`, configOBj).then(res => res.json()).then(json => {
+      debugger
       cartApi.attatchResponseToDom();
       return console.log("Add SponsorItem");
     })
